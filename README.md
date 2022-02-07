@@ -11,9 +11,25 @@ Project details:
 * Unity 2D game for mobile (Android & iOS)
 * Windows environment
 
-The documents also provides global Unity performance optimisation and Windows/Android automation. 
+The documents also provides global Unity performance optimisation and Windows/Android automation.
 
-## Android & Windows Automation
+## Table of contents
+* [Android and Windows Automation](#android-and-windows-automation)
+* [Unity Performance Optimisation](#unity-performance-optimisation)
+
+## Android and Windows Automation
+
+![Bash](https://img.shields.io/badge/Windows-Bash-black.svg) ![Android](https://img.shields.io/badge/Mobile-Android-brightgreen.svg)
+
+Windows bash commands to automate the communication between android devices, Windows and Unity.
+
+## Unity Performance Optimisation
+
+![C#](https://img.shields.io/badge/Unity-Csharp-purple.svg)
+
+Code architecture, Unity tips and profiling to develop a top performance mobile 2D game.
 
 
 
+
+This document presents Windows commands to automate the communication between android devices and Unity. The language used is Batch. To complete the automatisation, a shortcut is created and linked to a keyboard combination.
