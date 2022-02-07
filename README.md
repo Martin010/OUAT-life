@@ -1,3 +1,3 @@
 # OUAT-life
 
-va te faire enculer
+va te fai
