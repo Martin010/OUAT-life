@@ -20,7 +20,7 @@ The documents also provides global Unity performance optimisation and Windows/An
 
 ![Bash](https://img.shields.io/badge/Windows-Bash-black.svg) ![Android](https://img.shields.io/badge/Mobile-Android-brightgreen.svg)
 
-Windows bash commands to automate the communication between android devices, Windows and Unity. Click here
+Windows bash commands to automate the communication between android devices, Windows and Unity. Click [here](documents/Android-and-Windows-Automation.md)
 
 ## Unity Performance Optimisation
 
