@@ -26,9 +26,4 @@ Windows bash commands to automate the communication between android devices, Win
 
 ![C#](https://img.shields.io/badge/Unity-Csharp-purple.svg)
 
-Code architecture, Unity tips and profiling to develop a top performance mobile 2D game. Click here
-
-
-
-
-This document presents Windows commands to automate the communication between android devices and Unity. The language used is Batch. To complete the automatisation, a shortcut is created and linked to a keyboard combination.
+Code architecture, Unity tips and profiling to develop a top performance mobile 2D game. Click [here](Documents/Unity-Performance-Optimisation.md)
