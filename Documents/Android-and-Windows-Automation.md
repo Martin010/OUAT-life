@@ -143,7 +143,7 @@ package:com.google.android.gm
 
 </br>
 
-* Second step : To find the **package activity** to launch list all the activities published by the package
+* Second step : to find the **package activity** to launch list all the activities published by the package
 
 ```bash
 adb -s ipadd shell #press Enter
