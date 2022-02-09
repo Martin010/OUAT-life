@@ -31,9 +31,9 @@ This document presents Windows commands to automate the communication between An
 | *name.apk*            | your application                  |
 | *com.package.name*    | name of the package to process    |
 
-## Connecting an Android Devices to Windows
+## Connecting Android Devices to Windows
 
-If all the prerequisite are completed, Windows should **automatically** detect all Android devices **connected via USB**.
+If all prerequisites are completed, Windows should **automatically** detect all Android devices **connected via USB**.
 
 * To display all the devices connected via USB or TCP/IP
 
@@ -55,7 +55,7 @@ adb pair ipadd:port
 
 </br>
 
-## Installing a file in Android devices from Windows
+## Installing an application on Android devices from Windows
 
 ### Step by step with shell
 
@@ -103,13 +103,13 @@ Options:
 
 </br>
 
-## Launching an application in Android devices from Windows
+## Launching an application on Android devices from Windows
 
 ### Find the package and the activity
 
 If you already know the name of the package and of the activity to [Launch and stop an application](#launch-and-stop-an-application).
 
-* First step : find the **package** installed on the device. To **list all the packages** present in the device
+* First step : to find the **package** installed on the device list all the packages present in the device
 
 ```bash
 adb -s ipadd shell pm list packages
@@ -143,7 +143,7 @@ package:com.google.android.gm
 
 </br>
 
-* Second step : find the package activity to launch. To find all **activities published** by a package
+* Second step : To find the **package activity** to launch list all the activities published by the package
 
 ```bash
 adb -s ipadd shell #press Enter
