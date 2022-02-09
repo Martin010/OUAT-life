@@ -4,6 +4,17 @@
 
 This document presents Windows commands to automate the communication between Android devices, Windows and Unity. The language used is Batch and ADB (Android Debug Bridge) commands. To complete the automation, a shortcut is created and linked to a keyboard combination.
 
+## Table of contents
+* [Prerequisite](#prerequisite)
+* [Syntax](#syntax)
+* [Connecting an Android Devices to Windows](#connecting-an-android-devices-to-windows)
+* [Installing a file in Android devices from Windows](#installing-a-file-in-android-devices-from-windows)
+  * [Step by step with shell](#step-by-step-with-shell)
+  * [The ULTIMATE command](#the-ultimate-command)
+* [Launching an application in Android devices from Windows](#launching-an-application-in-android-devices-from-windows)
+  * [Find the package and the activity](#find-the-package-and-the-activity)
+  * [Launch and stop an application](#launch-and-stop-an-application)
+
 ## Prerequisite
 
 * [Android SDK](https://android-sdk.fr.uptodown.com/windows) installed
@@ -42,7 +53,9 @@ adb connect ipadd
 adb pair ipadd:port
 ```
 
-## Installing a file in Android Devices from Windows
+</br>
+
+## Installing a file in Android devices from Windows
 
 ### Step by step with shell
 
@@ -88,11 +101,13 @@ Options:
 -k: Keep the data and cache directories around after package removal.
 ```
 
+</br>
+
 ## Launching an application in Android devices from Windows
 
 ### Find the package and the activity
 
-If you already know the name of the package and of the activity to launch, go to the step 3.
+If you already know the name of the package and of the activity to [Launch and stop an application](#launch-and-stop-an-application).
 
 * First step : find the **package** installed on the device. To **list all the packages** present in the device
 
@@ -124,7 +139,7 @@ package:com.android.statementservice
 package:com.google.android.as
 package:com.google.android.gm
 ```
-> My package is named **com.qiwy.com.ouat.life** in the device.
+> My package is named `com.qiwy.com.ouat.life` in the device.
 
 </br>
 
@@ -152,11 +167,11 @@ com.qiwy.com.ouat.life/com.unity.androidnotifications.UnityNotificationRestartOn
 com.qiwy.com.ouat.life/com.google.firebase.auth.api.fallback.service.FirebaseAuthFallbackService
 d2s:/ $
 ```
-> The package **com.qiwy.com.ouat.life** contains the activity *com.qiwy.com.ouat.life/com.unity3d.player.UnityPlayerActivity*. This activity allows to start the game.
+> The package `com.qiwy.com.ouat.life` contains the activity `com.qiwy.com.ouat.life/com.unity3d.player.UnityPlayerActivity`. This activity allows to start the game.
 
-</br>
+### Launch and stop an application
 
-* Third step : launch the application. To launch an application
+* To launch an application
 
 ```bash
 adb -s ipadd shell am start -n com.package.name/com.activity.name
@@ -170,7 +185,7 @@ adb -s ipadd shell am start -n com.package.name/com.activity.name
 
 </br>
 
-* Bonus : stop an application. To stop an application
+* To stop an application
 
 ```bash
 adb -s ipadd shell am force-stop com.package.name
