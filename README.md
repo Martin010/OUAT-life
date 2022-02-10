@@ -14,7 +14,7 @@ The documents also provides global Unity performance optimisation and Windows/An
 
 ## Table of contents
 * [Android and Windows Automation](#android-and-windows-automation)
-* [Unity Performance Optimisation](#unity-performance-optimisation)
+* [Unity Performance Optimization](#unity-performance-optimization)
 
 ## Android and Windows Automation
 
@@ -22,8 +22,8 @@ The documents also provides global Unity performance optimisation and Windows/An
 
 Windows bash commands to automate the communication between android devices, Windows and Unity. Click [here](Documents/Android-and-Windows-Automation.md)
 
-## Unity Performance Optimisation
+## Unity Performance Optimization
 
 ![C#](https://img.shields.io/badge/Unity-Csharp-purple.svg)
 
-Code architecture, Unity tips and profiling to develop a top performance mobile 2D game. Click [here](Documents/Unity-Performance-Optimisation.md)
+Code architecture, Unity tips and profiling to develop a top performance mobile 2D game. Click [here](Documents/Unity-Performance-Optimization.md)
