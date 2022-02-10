@@ -1,8 +1,8 @@
-# Android and Windows Automation
+# Unity Performance Optimization
 
-![Bash](https://img.shields.io/badge/Windows-Bash-black.svg) ![Android](https://img.shields.io/badge/Mobile-Android-brightgreen.svg)
+![Bash](https://img.shields.io/badge/Unity-Csharp-purple.svg) ![Android](https://img.shields.io/badge/Mobile-Android-brightgreen.svg) ![iOS](https://img.shields.io/badge/Mobile-iOS-red.svg)
 
-This document presents Windows commands to automate the communication between Android devices, Windows and Unity. The language used is Batch and ADB (Android Debug Bridge) commands. To complete the automation, a shortcut is created and linked to a keyboard combination.
+Performance optimization is a real challenge for all videogames creators. Performances are even more important for Android or iOS projects. FPS drops, latency, lag, etc. disturb players's experience and discourage them to play once again. The variety and the wide selection of mobile devices combined with the diversity of hardaware and specification can make you giddy. This document provides some 
 
 ## Table of contents
 * [Prerequisite](#prerequisite)
