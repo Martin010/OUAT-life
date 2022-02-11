@@ -78,6 +78,15 @@ When an element is changed, the whole canvas is reanalyzed. Generating canvas me
 	<em>First Image : Canvas not separate | Second Image : Canvas separate</em>
 </p>
 
+* Hide invisible UI elements and invisible Canvas. 
+
+Disable the entire canvas. If a certain group of elements have to disappear, group them on their own separate canvas.
+
+<p align="center">
+	<img src="Images/UI-Not-Hide.png" alt="UI-Not-Hide" width="40%"/> <img src="Images/UI-Hide.png" alt="UI-Hide" width="40%"/></br>
+	<em>First Image : UI and canvas not hide | Second Image : UI and canvas hide</em>
+</p>
+
 </br>
 
 ## Installing an application on Android devices from Windows
