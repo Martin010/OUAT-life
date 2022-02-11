@@ -4,16 +4,23 @@
 
 Performance optimization is a real challenge for all videogames creators. Performances are even more important for Android or iOS projects. FPS drops, latency, lag, etc. disturb players's experience and discourage them to play once again. The variety and the wide selection of mobile devices combined with the diversity of hardaware and specification can make you giddy. This document provides code architecture, Unity tips and profiling to develop a top performance mobile 2D game.
 
+Back to [Readme](../README.md)
+
 ## Table of contents
 * [Prerequisites](#prerequisites)
 * [Profiling](#profiling)
-* [Connecting an Android Devices to Windows](#connecting-an-android-devices-to-windows)
-* [Installing a file in Android devices from Windows](#installing-a-file-in-android-devices-from-windows)
-  * [Step by step with shell](#step-by-step-with-shell)
-  * [The ULTIMATE command](#the-ultimate-command)
-* [Launching an application in Android devices from Windows](#launching-an-application-in-android-devices-from-windows)
-  * [Find the package and the activity](#find-the-package-and-the-activity)
-  * [Launch and stop an application](#launch-and-stop-an-application)
+* [UI](#ui-adjustment)
+* [Rendering](#rendering)
+  * [Lights](#lights)
+  * [Shadows](#shadows)
+  * [Quality](#quality)
+  * [Frame Rate and Resolution](#frame-rate-and-resolution)
+* [Unity tips](#unity-tips)
+  * [Scene](#scene)
+  * [Player Settings](#player-settings)
+  * [Editor](#editor)
+  * [Resources](#resources)
+* [Code architecture](#code-architecture)
 
 ## Prerequisites
 
@@ -27,41 +34,49 @@ The Unity Profiler provides **essential performance information** about Unity ap
 The Profiler need to be used at the **beginning** of the project and **often**. A performance signature allows to the developper to spot new issues more easly.
 
 <p align="center">
-	<img align="" src="Images/Profiler.png" alt="Profiler" width="50%"/></br
+	<img src="Images/Profiler.png" alt="Profiler" width="75%"/></br>
 	<em>Unity Profiler window</em>
 </p>
 
 Profiling on **different devices** gives the opportunity to gain more **accurate insights**. It's important to profile and optimize for **both the highest and lowest** specifity devices targeted.
 
-* To display the Unity Profiler go to *Windows > Profiler*. Then, build the application with **Development Build** and **Autoconnect profiler** enabled. Finally, connect the device to the computer, launch the Unity application on your device and press the button *Record* in the Profiler window.
+
+To display the Unity Profiler go to *Window > Profiler*. Then, build the application with **Development Build** and **Autoconnect profiler** enabled. Finally, connect the device to the computer, launch the Unity application on your device and press the button *Record* in the Profiler window.
+
+<p align="center">
+	<img src="Images/Build-Settings.png" alt="Buil Settings" width="75%"/></br>
+	<em>Build Settings options</em>
+</p>
+
 
 > WARNING
 > 
 > The **Autoconnect profiler** option can not work and avoid the connection between Unity and devices. If the Profiler doesn't detect devices, disable the **Autoconnect profiler** in Build Settings can correct this problem. However, devices should be **connect manually**.
 
 
+To learn more about how to configure, use and interpret Unity Profiler, go read the article [Optimize your mobile game performance from Unity’s top engineers](https://blog.unity.com/technology/optimize-your-mobile-game-performance-tips-on-profiling-memory-and-code-architecture)
 
-## Connecting Android Devices to Windows
+</br>
 
-If all prerequisites are completed, Windows should **automatically** detect all Android devices **connected via USB**.
+## UI
 
-* To display all the devices connected via USB or TCP/IP
+* Use the package **TextMeshPro** (TMP). 
 
-```shell
-adb devices
-```
+It's the perfect replacement for Unity's UI Text. Since the geometry created by TextMeshPro uses two triangles per character just like Unity's text components, this improved visual quality and flexibility comes at no additional performance cost. TMP provides improved control over text formatting and layout. To download and install TMP package, go to *Window > Package Manager* and search *TextMeshPro* in the research bar.
 
-* To pair a device with **Android 10 or lower** (requires the device setting **ADB over network** enabled)  
+<p align="center">
+	<img src="Images/TMP.png" alt="Buil Settings" width="50%"/></br>
+	<em>TextMeshPro in Package Manager</em>
+</p>
 
-```shell
-adb connect ipadd
-```
+* Separate UI elements in subcanvaces. 
 
-* To pair a device with **Android 11 or upper** (requires the device setting **Wireless Debugging** enabled and its **password**)
+When an element is changed, the whole canvas is reanalyzed. Generating canvas meshes can be expensive. UI elements need to be collected into batches so that they’re drawn in as few draw calls as possible. Because batch generation is expensive, we want to regenerate them only when necessary.
 
-```shell
-adb pair ipadd:port
-```
+<p align="center">
+	<img src="Images/Canvas-Not-Separate.png" alt="Canvas Not Separate" width="40%"/> <img src="Images/Canvas-Separate.png" alt="Canvas Separate" width="40%"/></br>
+	<em>First Image : Canvas not separate | Second Image : Canvas separate</em>
+</p>
 
 </br>
 

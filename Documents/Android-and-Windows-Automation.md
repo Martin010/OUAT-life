@@ -4,6 +4,8 @@
 
 This document presents Windows commands to automate the communication between Android devices, Windows and Unity. The language used is Batch and ADB (Android Debug Bridge) commands. To complete the automation, a shortcut is created and linked to a keyboard combination.
 
+Back to [Readme](../README.md)
+
 ## Table of contents
 * [Prerequisites](#prerequisites)
 * [Syntax](#syntax)
@@ -196,3 +198,9 @@ adb -s ipadd shell am force-stop com.package.name
 ```bash
 > adb -s RF8M828XJEZ shell am force-stop com.qiwy.com.ouat.life
 ```
+
+</br>
+
+---
+
+Back to [Readme](../README.md)
