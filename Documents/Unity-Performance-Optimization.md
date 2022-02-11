@@ -2,11 +2,11 @@
 
 ![Bash](https://img.shields.io/badge/Unity-Csharp-purple.svg) ![Android](https://img.shields.io/badge/Mobile-Android-brightgreen.svg) ![iOS](https://img.shields.io/badge/Mobile-iOS-red.svg)
 
-Performance optimization is a real challenge for all videogames creators. Performances are even more important for Android or iOS projects. FPS drops, latency, lag, etc. disturb players's experience and discourage them to play once again. The variety and the wide selection of mobile devices combined with the diversity of hardaware and specification can make you giddy. This document provides some 
+Performance optimization is a real challenge for all videogames creators. Performances are even more important for Android or iOS projects. FPS drops, latency, lag, etc. disturb players's experience and discourage them to play once again. The variety and the wide selection of mobile devices combined with the diversity of hardaware and specification can make you giddy. This document provides code architecture, Unity tips and profiling to develop a top performance mobile 2D game.
 
 ## Table of contents
-* [Prerequisite](#prerequisite)
-* [Syntax](#syntax)
+* [Prerequisites](#prerequisites)
+* [Profiling](#profiling)
 * [Connecting an Android Devices to Windows](#connecting-an-android-devices-to-windows)
 * [Installing a file in Android devices from Windows](#installing-a-file-in-android-devices-from-windows)
   * [Step by step with shell](#step-by-step-with-shell)
@@ -15,21 +15,31 @@ Performance optimization is a real challenge for all videogames creators. Perfor
   * [Find the package and the activity](#find-the-package-and-the-activity)
   * [Launch and stop an application](#launch-and-stop-an-application)
 
-## Prerequisite
+## Prerequisites
 
-* [Android SDK](https://android-sdk.fr.uptodown.com/windows) installed
+* [Unity](https://unity3d.com/fr/get-unity/download) installed (ideally a LTS version) with the modules **Android SDK & NDK tools**, **OpenJDK** and **iOS Build Support**
 * [USB debugging](https://developer.android.com/studio/debug/dev-options) or [Wireless debugging (Android 11+) or ADB over network enable (Android 10 and lower)](https://developer.android.com/studio/command-line/adb) enabled on the device
 
-## Syntax
-  
-| Syntax              | Description                         |
-| ------------------- | ----------------------------------- |
-| *ipadd*               | IP adress                         |
-| *local*               | file name to copy                         |
-| *remote*              | directory destination             |
-| *path*                | path to the apk                   |
-| *name.apk*            | your application                  |
-| *com.package.name*    | name of the package to process    |
+## Profiling
+
+The Unity Profiler provides **essential performance information** about Unity applications. It allows to see graphically how a game is doing, what takes time to compute, how long is the rendering per frame and which sections are absorbing your performances.
+
+The Profiler need to be used at the **beginning** of the project and **often**. A performance signature allows to the developper to spot new issues more easly.
+
+<p align="center">
+	<img align="" src="Images/Profiler.png" alt="Profiler" width="50%"/></br
+	<em>Unity Profiler window</em>
+</p>
+
+Profiling on **different devices** gives the opportunity to gain more **accurate insights**. It's important to profile and optimize for **both the highest and lowest** specifity devices targeted.
+
+* To display the Unity Profiler go to *Windows > Profiler*. Then, build the application with **Development Build** and **Autoconnect profiler** enabled. Finally, connect the device to the computer, launch the Unity application on your device and press the button *Record* in the Profiler window.
+
+> WARNING
+> 
+> The **Autoconnect profiler** option can not work and avoid the connection between Unity and devices. If the Profiler doesn't detect devices, disable the **Autoconnect profiler** in Build Settings can correct this problem. However, devices should be **connect manually**.
+
+
 
 ## Connecting Android Devices to Windows
 

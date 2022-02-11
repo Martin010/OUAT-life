@@ -5,7 +5,7 @@
 This document presents Windows commands to automate the communication between Android devices, Windows and Unity. The language used is Batch and ADB (Android Debug Bridge) commands. To complete the automation, a shortcut is created and linked to a keyboard combination.
 
 ## Table of contents
-* [Prerequisite](#prerequisite)
+* [Prerequisites](#prerequisites)
 * [Syntax](#syntax)
 * [Connecting an Android Devices to Windows](#connecting-an-android-devices-to-windows)
 * [Installing a file in Android devices from Windows](#installing-a-file-in-android-devices-from-windows)
@@ -15,17 +15,17 @@ This document presents Windows commands to automate the communication between An
   * [Find the package and the activity](#find-the-package-and-the-activity)
   * [Launch and stop an application](#launch-and-stop-an-application)
 
-## Prerequisite
+## Prerequisites
 
 * [Android SDK](https://android-sdk.fr.uptodown.com/windows) installed
 * [USB debugging](https://developer.android.com/studio/debug/dev-options) or [Wireless debugging (Android 11+) or ADB over network enable (Android 10 and lower)](https://developer.android.com/studio/command-line/adb) enabled on the device
 
 ## Syntax
   
-| Syntax              | Description                         |
-| ------------------- | ----------------------------------- |
+| Syntax                | Description                       |
+| --------------------- | --------------------------------- |
 | *ipadd*               | IP adress                         |
-| *local*               | file name to copy                         |
+| *local*               | file name to copy                 |
 | *remote*              | directory destination             |
 | *path*                | path to the apk                   |
 | *name.apk*            | your application                  |
