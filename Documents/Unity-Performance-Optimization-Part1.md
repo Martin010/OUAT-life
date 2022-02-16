@@ -8,7 +8,7 @@ Performance optimization is a real challenge for all videogames creators. Perfor
 
  > This part is focused on **Profiling**
 
-Back to [Readme](../README.md) or go to [Unity Performance Optimization - Part 2 : UI](Unity-Performance-Optimization-Part2)
+Back to [Readme](../README.md) or go to [Unity Performance Optimization - Part 2 : UI](Unity-Performance-Optimization-Part2.md)
 
 ## Table of contents
 * [Prerequisites](#prerequisites)
@@ -55,4 +55,4 @@ To learn more about how to configure, use and interpret Unity Profiler, go read 
 
 ---
 
-Back to [Readme](../README.md) or go to [Unity Performance Optimization - Part 2 : UI](Unity-Performance-Optimization-Part2)
+Back to [Readme](../README.md) or go to [Unity Performance Optimization - Part 2 : UI](Unity-Performance-Optimization-Part2.md)
