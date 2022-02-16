@@ -12,12 +12,12 @@
 
 ## Table of contents
 * [Android and Windows Automation](#android-and-windows-automation)
-* Unity Performance Optimization
-  * [Part 1 - Profiling](#part-1--profiling)
-  * [Part 2 - UI](#part-1--ui)
-  * [Part 3 - Rendering](#part-3--rendering)
-  * [Part 4 - Unity Tips](#part-4--unity-tips)
-  * [Part 5 - Code Architecture](#part-4--code-architecture)
+* [Unity Performance Optimization](#unity-performance-optimization)
+  * [Part 1 - Profiling](#part-1---profiling)
+  * [Part 2 - UI](#part-2---ui)
+  * [Part 3 - Rendering](#part-3---rendering)
+  * [Part 4 - Unity Tips](#part-4---unity-tips)
+  * [Part 5 - Code Architecture](#part-5---code-architecture)
 
 ## Android and Windows Automation
 
@@ -25,7 +25,7 @@
 
 Windows bash commands to automate the communication between android devices, Windows and Unity. Click [here](Documents/Android-and-Windows-Automation.md)
 
-## Unity Performance Optimization - Part 1 : Profiling, UI & Rendering
+## Unity Performance Optimization
 
 ![C#](https://img.shields.io/badge/Unity-Csharp-purple.svg) 
 ![Profiler](https://img.shields.io/badge/Unity-Profiler-orange.svg)
