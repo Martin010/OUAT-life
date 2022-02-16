@@ -1,10 +1,11 @@
-# Unity Performance Optimization
+# Unity Performance Optimization - Part 1 : Profiling, UI & Rendering
 
 ![Bash](https://img.shields.io/badge/Unity-Csharp-purple.svg) ![Android](https://img.shields.io/badge/Mobile-Android-brightgreen.svg) ![iOS](https://img.shields.io/badge/Mobile-iOS-red.svg)
 
-Performance optimization is a real challenge for all videogames creators. Performances are even more important for Android or iOS projects. FPS drops, latency, lag, etc. disturb players's experience and discourage them to play once again. The variety and the wide selection of mobile devices combined with the diversity of hardaware and specification can make you giddy. This document provides code architecture, Unity tips and profiling to develop a top performance mobile 2D game.
+Performance optimization is a real challenge for all videogames creators. Performances are even more important for Android or iOS projects. FPS drops, latency, lag, etc. disturb players's experience and discourage them to play once again. The variety and the wide selection of mobile devices combined with the diversity of hardaware and specification can make you giddy. This document provides **UI**, **Rendering** and **Profiling** advices to develop a top performance mobile 2D game.
 
 Back to [Readme](../README.md)
+Go to [Unity Performance Optimization - Part 2 : Unity Tips & Code Architecture](Unity-Performance-Optimization-Part2)
 
 ## Table of contents
 * [Prerequisites](#prerequisites)
@@ -87,53 +88,95 @@ Disable the entire canvas. If a certain group of elements have to disappear, gro
 	<em>First Image : UI and canvas not hide | Second Image : UI and canvas hide</em>
 </p>
 
+* Disable the **canvas component**, not the game object itself.
+
+Disabling the Canvas Component will stop the Canvas from issuing draw calls to the GPU, so the Canvas will not be visible any longer. However, the Canvas won’t discard its vertex buffer; it will keep all of its meshes and vertices, and when you re-enable it, it won’t trigger a rebuild, it will just start drawing them again.
+
+
+<p align="center">
+	<img src="Images/Canvas-Disabled.png" alt="Canvas Disabled" width="50%"/></br>
+	<em>Canvas component disabled</em>
+</p>
+
+* All elements in a canvas need to have the same **Pos Z** value.
+
+The canvas components' layering is linked to their **position in the hierarchy** and the canvas' **Order in layer** value.
+
+* Disable **Raycast Target** property for all non-interactive elements.
+
+The Graphic Raycaster performs intersection checks on UI elements that are interested in receiving input. However, not all UI elements are interested in receiving updates.
+
+<p align="center">
+	<img src="Images/Raycast-Target.png" alt="Buil Settings" width="50%"/></br>
+	<em>Raycast Target disabled</em>
+</p>
+
+* **Group UI elements** instead of create an image for each one.
+
+Create one large image (1024x1024 for example) with all the UI elements and applied a mesh filter to retrieve each individual piece from the image.
+
+<p align="center">
+	<img src="Images/Window.png" alt="Window" width="40%"/></br>
+	<em>All windows (4000x5000)</em>
+</p>
+
+* Reduce the **frame rate** when it's possible.
+
+When an UI contains none or few animations or shaders, reduce the frame rate to 30 frames per second. Simple UIs don't need to be refreshed as a same rate as the rest of game. *[Link to Code Arichitecture - Frame rate code](#link-to-code-architecture)* explains how change the frame rate with a C# Unity script.
+
+
+
 </br>
 
-## Installing an application on Android devices from Windows
+## Rendering
 
-### Step by step with shell
+### Lights
 
-* To copy a file **from a specific directory** to a device
+* Disable **Lighting** options.
 
-```bash
-adb -s ipadd push local remote
-```
+	If you don't need any light in your game :
+	
+	* Delete all lights in your scene.
+	* Go to *Window > Rendering > Lighting* and set up Lighting *Scene*, *Environment* and *Baked Lightmaps* like the pictures below.
+	* If a **Render Pipeline Asset** is used, disabled all ligths options in the *Inspector*.
 
-* To copy a file **from a device** to a specific directory
+<p align="center">
+	<img src="Images/Lighting-Scene.png" alt="Lighting Scene" width="28%"/> <img src="Images/Lighting-Environment.png" alt="Lighting Environment" width="28%"/> <img src="Images/Lighting-BakedLightmaps.png" alt="Lighting Baked Lightmaps" width="28%"/></br>
+	<em>Lighting - Scene, Environment & Baked Lightmaps</em>
+</p>
 
-```bash
-adb -s ipadd pull local remote
-```
+* Avoid too many dinamyc lights.
 
-* To **install** an .apk in a device from the **shell**
+If it possible, don't use dynamic lighting and prefer unlit textures. Lighting calculations take too much resources, espacially with many objects to render.
 
-```bash
-adb -s ipadd shell pm install path
-```
+### Shadows
 
-### The ULTIMATE command
+Shadows calculations need a lot of resources, espacially with many objects and ligths. Despite of your game, some behaviors may be choosen :
 
-* **Push** and **install** at the same time
+* Disable all shadows (no dinamyc lights):	
+	* The game doesn't use a **Render Pipeline Asset** : *Edit > Project Settings > Quality* set up all **Quality Levels**.
+	* The game uses a **Render Pipeline Asset** : select the *Render Pipeline Asset* in *Project* and edit the parameters in the *Inspector*.
+	
+<p align="center">
+	<img src="Images/No-Shadow-Settings.png" alt="No Shadow Settings" width="35%"/> &nbsp; <img src="Images/No-Shadow-Pipeline.png" alt="No Shadow Pipeline" width="31%"/></br>
+	<em>Shadows parameters in Project Settings and Render Pipeline</em>
+</p>
 
-```bash
-adb -s ipadd install -r name.apk
-```
+* Disabled real-time shadows (dynamic lights). 
 
-```bash
-Options
--l: Install the package with forward lock.
--r: Reinstall an existing app, keeping its data.
--t: Allow test APKs to be installed.
--i <INSTALLER_PACKAGE_NAME>: Specify the installer package name.
--s: Install package on the shared mass storage (such as sdcard).
--f: Install package on the internal system memory.
--d: Allow version code downgrade.
+Anything real-time must be computed by the mobile device's CPU first before rendering and this will negatively impact games' performance. Instead, shadows can be directly drawing on 2D characters for example. Fake shadows can also be created by using a blurred texture applied to a simple mesh or quad underneath your characters. Otherwise, a blob shadows can be created with custom shaders.
 
-uninstall [options] <PACKAGE>   Removes a package from the system.
+<p align="center">
+	<img src="Images/2D-Shadows.png" alt="2D Shadows" width="30%"/> &nbsp; <img src="Images/Shadows-Comparaison.png" alt="Shadows Comparaison" width="50%"/></br>
+	<em>2D Drawing Shadows | Fake Shadows (red) VS Real Time Shadows (blue)</em>
+</p>
 
-Options:
--k: Keep the data and cache directories around after package removal.
-```
+* Keep shadows simple (dynamic lights). 
+
+Be aware that what is displayed in the editor, it doesn’t represent what will be displayed on a device. For example, a Low Resolution Shadow setting could be perceived as really pixelated on a computer but could be enough on a device.
+
+**Soft Shadows** demand more resources than **Hard Shadows**. The option *Hard Shadows Only* can be selected in *Edit > Project Settings > Quality* (don't forget to set-up each quality). But with this option, at a very low resolution the shadows are really pixelated and edgy. So, chosing the option *Close Fit* in *Shadow Projection* allows to have shadows less pixelated.
+
 
 </br>
 

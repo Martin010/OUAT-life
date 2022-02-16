@@ -10,11 +10,12 @@ Various documents usefull for the project.
 * Windows environment
 * Android & iOS
 
-The documents also provides global Unity performance optimisation and Windows/Android automation.
+The documents provides global Unity performance optimisation and Windows/Android automation.
 
 ## Table of contents
 * [Android and Windows Automation](#android-and-windows-automation)
-* [Unity Performance Optimization](#unity-performance-optimization)
+* [Unity Performance Optimization - Part 1 : Profiling, UI & Rendering](#unity-performance-optimization-part-1--profiling-ui--rendering)
+* [Unity Performance Optimization - Part 2 : Unity Tips & Code Architecture](#unity-performance-optimization-part-2--unity-tips--code-architecture)
 
 ## Android and Windows Automation
 
@@ -22,8 +23,15 @@ The documents also provides global Unity performance optimisation and Windows/An
 
 Windows bash commands to automate the communication between android devices, Windows and Unity. Click [here](Documents/Android-and-Windows-Automation.md)
 
-## Unity Performance Optimization
+## Unity Performance Optimization - Part 1 : Profiling, UI & Rendering
 
 ![C#](https://img.shields.io/badge/Unity-Csharp-purple.svg)
 
-Code architecture, Unity tips and profiling to develop a top performance mobile 2D game. Click [here](Documents/Unity-Performance-Optimization.md)
+First part of the guide for developing a top performance mobile 2D game. This part is focused on Profiling, UI and Rendering. Click [here](Documents/Unity-Performance-Optimization-Part1.md)
+
+## Unity Performance Optimization - Part 2 : Unity Tips & Code Architecture
+
+![C#](https://img.shields.io/badge/Unity-Csharp-purple.svg)
+
+Second part of the guide for developing a top performance mobile 2D game. This part is focused on Code architecture and Unity tips. Click [here](Documents/Unity-Performance-Optimization-Part2.md)
+
