@@ -1,4 +1,4 @@
-# Unity Performance Optimization - Part 1 : Profiling, UI & Rendering
+# Unity Performance Optimization - Part 2 : UI
 
 ![Bash](https://img.shields.io/badge/Unity-Csharp-purple.svg) ![Android](https://img.shields.io/badge/Mobile-Android-brightgreen.svg) ![iOS](https://img.shields.io/badge/Mobile-iOS-red.svg)
 
