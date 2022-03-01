@@ -120,9 +120,44 @@ A render pipeline performs a series of operations that take the contents of a Sc
 
 If you used pipeline assets, it's important to set-up them correctly, especially the **Low Level Quality**.
 
-First step is to enable *SRP Batcher*. Go to the *Pipeline Asset Inspector > Advanced > SRP Batcher*. The Scriptable Render Pipeline (SRP) Batcher is a draw call optimization that significantly improves performance for applications that use an SRP. The SRP Batcher reduces the CPU time Unity requires to prepare and dispatch draw calls for materials that use the same shader variant.
+First step is to enable *SRP Batcher*. Go to the *Pipeline Asset - Inspector > Advanced > SRP Batcher*. The Scriptable Render Pipeline (SRP) Batcher is a draw call optimization that significantly improves performance for applications that use an SRP. The SRP Batcher reduces the CPU time Unity requires to prepare and dispatch draw calls for materials that use the same shader variant.
 
-Second step is limit **Post Processing** effects
+Second step is limit **Post-Processing** effects. Fullscreen **Post-Processing effects**, like glows, can dramatically slow down performance. Use them cautiously.
+
+<p align="center">
+	<img src="Images/Batcher.png" alt="Batcher" width="50%"/> </br>
+	<em>Post-Processinf Inspector</em>
+</p>
+
+</br>
+
+### Frame Rate and Resolution
+
+* Choose the right **frame rate** in despite of the scene
+
+A dynamic scene with many animations, movements, shaders, etc. needs **60 FPS** (Frames Per Seconde) at least. A static scene like UI scenes for example needs only **30 FPS**.
+
+To change the frame rate of a scene, create a script or add in an existing script the function below :
+
+```cs
+public int frameRate; //Enter the desired frame rate's value in the inspector 
+
+void Awake()
+{
+	Application.targetFrameRate = frameRate;
+}
+```
+
+* Avoid **mobile native resolution**
+
+Newer devices allows to display very high resolutions. To gain some performance, use *Screen.SetResolution(int width, int height, bool fullscreenMode)* function in the *Start* of a script. It's important to allow the player to switch between different resolutions in the parameters. Profile multiple resolutions to find the best balance between quality and speed.
+
+```cs
+void Start()
+{
+	Screen.SetResolution(width, height, false);
+}
+```
 
 </br>
 

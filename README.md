@@ -45,7 +45,7 @@ Third and biggest part of the guide for developing a top performance mobile 2D g
 
 ### Part 4 - Unity Tips
 
-Fourth part of the guide for developing a top performance mobile 2D game. Variety of advices from *Player Settings* to Resources importation by way og *Scene* and *Editor* tips. Click [here](Documents/Unity-Performance-Optimization-Part4.md)
+Fourth part of the guide for developing a top performance mobile 2D game. Variety of advices from *Player Settings* to Resources importation by way of *Scene* and *Editor* tips. Click [here](Documents/Unity-Performance-Optimization-Part4.md)
 
 ### Part 5 - Code Architecture
 
