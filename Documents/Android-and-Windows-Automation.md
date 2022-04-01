@@ -19,7 +19,7 @@ Back to [Readme](../README.md)
 
 ## Prerequisites
 
-* [Android SDK](https://android-sdk.fr.uptodown.com/windows) installed
+* [Android SDK](https://developer.android.com/studio/releases/platform-tools) installed
 * [USB debugging](https://developer.android.com/studio/debug/dev-options) or [Wireless debugging (Android 11+) or ADB over network enable (Android 10 and lower)](https://developer.android.com/studio/command-line/adb) enabled on the device
 
 ## Syntax
